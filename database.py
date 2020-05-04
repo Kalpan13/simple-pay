@@ -19,7 +19,6 @@ def get_menu():
 def home_page():
     return render_template('index.html')
 
-
 @app.route('/list_accounts', methods = ['GET'])
 def list_all_students():
     loginFinder = paymentInstance.db.payment
@@ -32,7 +31,6 @@ def list_all_students():
         result.append(member)
     return jsonify({'accounts':result})
 
-
 @app.route('/list_canteens', methods = ['GET'])
 def list_all_canteens():
     canteenFinder = adminInstance.db.admin
@@ -40,8 +38,6 @@ def list_all_canteens():
     for m in canteenFinder.find():
         result.append(m['canteen'])
     return jsonify({'canteens':result})
-
-
 
 @app.route('/add_account',methods = ['POST'])
 def add_account():
@@ -121,14 +117,9 @@ def login_admin():
     else:
         return jsonify({"Error":"Login failed.. Check Username Password"})
 
-
 @app.route("/pay",methods = ['POST'])
 def pay():
     pass
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
